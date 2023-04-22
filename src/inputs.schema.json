@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "s11": {
+      "type": "number",
+      "default": 0
+    },
+    "s22": {
+      "type": "number",
+      "default": 0
+    },
+    "s33": {
+      "type": "number",
+      "default": 0
+    },
+    "s12": {
+      "type": "number",
+      "default": 0
+    },
+    "s13": {
+      "type": "number",
+      "default": 0
+    },
+    "s23": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": []
+}

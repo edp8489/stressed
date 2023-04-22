@@ -1,0 +1,48 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "vonMisesStress": {
+        "type": "number",
+        "default": 0
+      },
+      "invariants": {
+        "type": "object",
+        "properties": {
+          "I1": {
+            "type": "number",
+            "default": 0
+          },
+          "I2": {
+            "type": "number",
+            "default": 0
+          },
+          "I3": {
+            "type": "number",
+            "default": 0
+          }
+        },
+        "required": ["I1", "I2", "I3"]
+      },
+      "principalStresses": {
+        "type": "object",
+        "properties": {
+          "P1": {
+            "type": "number",
+            "default": 0
+          },
+          "P2": {
+            "type": "number",
+            "default": 0
+          },
+          "P3": {
+            "type": "number",
+            "default": 0
+          }
+        },
+        "required": ["P1", "P2", "P3"]
+      }
+    },
+    "required": []
+  }
+  
