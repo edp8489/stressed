@@ -8,6 +8,8 @@ import {NavBar, Footer} from "./Components/NavBar.jsx";
 import SummaryCard from "./Components/SummaryCard.jsx";
 import InputsCard from "./Components/InputsCard.jsx";
 import ResultsCard from "./Components/ResultsCard.jsx";
+import MohrsCircle from "./Components/Mohr.jsx";
+import { stateFromSchema } from "./Components/InputsCard.jsx";
 
 // analytics
 import TagManager from 'react-gtm-module'
@@ -26,37 +28,11 @@ let darkTheme = dark
 
 // import data files
 const inputsSchema = require('./inputs.schema.json')
-
-export function stateFromSchema(schema){
-  const DEFAULTS = {
-    "number":0,
-    "string":"",
-    "boolean":false
-  }
-  // create array of property names from schema
-  // check if default value is set in schema, otherwise fill in from fallback DEFAULTS
-  // return array of [[key, defaultValue], ...] pairs 
-  let properties = Object.keys(schema.properties).map((key) => {
-    let type = schema.properties[key].type
-    let defaultValue = "default" in schema.properties[key] ? schema.properties[key].default : DEFAULTS[type]
-    return [key, defaultValue]
-  })
-
-  // create initial state from properties pairs
-  const initialState = Object.fromEntries(properties)
-  //console.log("initial state")
-  //console.log(initialState)
-
-  return initialState
-}
-
-// generate lists for select menu
-// const selDisp = appData["tbd"].map(x=>mathUtils.selectFormat(x.metadata))
-// const selVal = appData["tbd"].map(x=>x.metadata.id)
+const resultsSchema = require('./results.schema.json')
 
 export default function App() {
   const [darkMode, toggleDark] = React.useState(false);
-  const [readyToCalc, setReady] = React.useState(false);
+  const [calcRequired, toggleCalc] = React.useState(false);
   // const [inputsState, setInputsState] = React.useState(stateFromSchema(inputsSchema));
   
   let theme = darkMode ? darkTheme : lightTheme;
@@ -72,8 +48,10 @@ export default function App() {
   */
  
   
-  const calculate = function(e){
+  const calculate = function(e, inputs){
     e.preventDefault()
+    toggleCalc(false)
+
 
     // calculate principal stresses
 
@@ -93,8 +71,11 @@ export default function App() {
         <InputsCard 
           sx={{textAlign:"center"}} 
           inputsSchema={inputsSchema}
+          changeNotifier={toggleCalc}
           handleSubmit={calculate} />
-        <ResultsCard />
+        <ResultsCard 
+          calcRequired={calcRequired}/>
+        <MohrsCircle />
         <Footer />
       </Box>
     </ThemeProvider>

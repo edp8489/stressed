@@ -18,13 +18,9 @@ export default function SummaryCard(props) {
           This tool performs several transformations and compares multiple failure theories for a
           given stress tensor.</Box>
           <Box sx={{ typography: "p", textAlign: "left" }}>
-          <ul >
-            <li>Calculates the principal stresses and stress invariants</li>
-            <li>Plots Mohr's circle for 2D or 3D stress states</li>
-            <li>Calculates Max Shear stress per Tresca criterion</li>
-            <li>Calculates von Mises stress</li>
-            <li>Compares two methods of determining sign for use with Signed von Mises theory</li>
-          </ul>
+            Calculates the principal stresses, stress invariants, and plots Mohr's Circle for 2D or 3D stress states<br />
+            Calculates Max Shear stress per Tresca failure theory<br />
+            Calculates von Mises stress and compares two methods of determining sign for use with Signed von Mises criterion<br />
         </Box>
         <br />
         <Accordion TransitionProps={{ unmountOnExit: true }}>
