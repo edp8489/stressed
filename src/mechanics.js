@@ -1,4 +1,4 @@
-import {eigs, trace, det, sort, pow, sqrt} from 'mathjs'
+import {eigs, trace, det, sort, pow, sqrt, abs, max} from 'mathjs'
 
 // function to calculate Von Mises stress
 // https://en.wikipedia.org/wiki/Von_Mises_yield_criterion
@@ -52,4 +52,11 @@ function principalStresses(S){
     return {P1, P2, P3}
 }
 
-export {vonMises, toMatrix, invariants, principalStresses}
+// function to calculate MaxShear stress for a given tensor
+function tresca(P1, P2, P3){
+
+    return(0.5*max(abs(P1 - P2),abs(P2 - P3),abs(P3 - P1)))
+
+}
+
+export {vonMises, toMatrix, invariants, principalStresses, tresca}
