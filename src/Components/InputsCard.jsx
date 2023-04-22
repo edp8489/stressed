@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import Grid from '@mui/material/Grid';
 
 export function stateFromSchema(schema){
+  // @TODO add recursion for nested objects
   const DEFAULTS = {
     "number":0,
     "string":"",
@@ -58,6 +59,8 @@ export default function InputsCard(props) {
   // schema for inputs {inputsSchema}
   const {inputsSchema} = props
   // handleSubmit function {handleSubmit}
+  const {handleSubmit} = props
+  // change notifier function
   const {changeNotifier} = props
 
   const [inputsState, setInputsState] = React.useState(stateFromSchema(inputsSchema));
@@ -71,7 +74,10 @@ export default function InputsCard(props) {
         component="form"
         noValidate
         autoComplete="off"
-        onSubmit={props.handleSubmit}
+        onSubmit={(e) => {
+          e.preventDefault()
+          handleSubmit(inputsState)
+        }}
       >
         <div>
           <FormControl sx={{ margin: "10px" }}>

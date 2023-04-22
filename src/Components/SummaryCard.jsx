@@ -22,28 +22,6 @@ export default function SummaryCard(props) {
             Calculates Max Shear stress per Tresca failure theory<br />
             Calculates von Mises stress and compares two methods of determining sign for use with Signed von Mises criterion<br />
         </Box>
-        <br />
-        <Accordion TransitionProps={{ unmountOnExit: true }}>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            id="debug-acc-header">
-            <Typography>Instructions</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Box sx={{ typography: "subtitle", textAlign: "center" }}>Usage</Box>
-            <Box sx={{ typography: "p", textAlign: "left" }}>
-              <i>...Instructions for use...</i>
-              <br /> <br />
-              <b>Input 1:</b> Short summary<br />
-              <b>Input 2:</b> ...<br />
-            </Box>
-            <br />
-            <Box sx={{ typography: "subtitle", textAlign: "center" }}>Returns</Box>
-            <Box sx={{ typography: "p" }}>
-              <i>Summary of outputs</i>
-            </Box>
-          </AccordionDetails>
-        </Accordion>
       </Typography>
     </Paper>
   )

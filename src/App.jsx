@@ -10,6 +10,7 @@ import InputsCard from "./Components/InputsCard.jsx";
 import ResultsCard from "./Components/ResultsCard.jsx";
 import MohrsCircle from "./Components/Mohr.jsx";
 import { stateFromSchema } from "./Components/InputsCard.jsx";
+import * as mech from "./mechanics.js"
 
 // analytics
 import TagManager from 'react-gtm-module'
@@ -28,12 +29,25 @@ let darkTheme = dark
 
 // import data files
 const inputsSchema = require('./inputs.schema.json')
-const resultsSchema = require('./results.schema.json')
+//const resultsSchema = require('./results.schema.json')
 
 export default function App() {
   const [darkMode, toggleDark] = React.useState(false);
   const [calcRequired, toggleCalc] = React.useState(false);
-  // const [inputsState, setInputsState] = React.useState(stateFromSchema(inputsSchema));
+  const [resultsState, updateResults] = React.useState({
+    "vonMisesStress":0,
+    "invariants":{
+      "I1":0,
+      "I2":0,
+      "I3": 0
+    },
+    "principalStresses":{
+      "P1":0,
+      "P2":0,
+      "P3":0
+    },
+    "maxShearStress":0
+  });
   
   let theme = darkMode ? darkTheme : lightTheme;
 
@@ -48,18 +62,28 @@ export default function App() {
   */
  
   
-  const calculate = function(e, inputs){
-    e.preventDefault()
+  const calculate = function(inputs){
     toggleCalc(false)
-
+    //console.log(inputs)
+    let stressTensor = mech.toMatrix(inputs)
 
     // calculate principal stresses
+    let principalStresses = mech.principalStresses(stressTensor)
+    //console.log(principalStresses)
 
     // calculate invariants
+    let invariants = mech.invariants(stressTensor)
 
     // calculate Max Shear stress
+    let maxShear = mech.tresca(principalStresses.P1, principalStresses.P2, principalStresses.P3)
 
     // calculate von Mises stress
+    let vonMises = mech.vonMises(inputs)
+
+    updateResults({"vonMisesStress":vonMises,
+    "invariants":invariants,
+    "principalStresses":principalStresses,
+    "maxShearStress":maxShear})
   }
   
   return (
@@ -74,7 +98,8 @@ export default function App() {
           changeNotifier={toggleCalc}
           handleSubmit={calculate} />
         <ResultsCard 
-          calcRequired={calcRequired}/>
+          calcRequired={calcRequired}
+          results={resultsState} />
         <MohrsCircle />
         <Footer />
       </Box>

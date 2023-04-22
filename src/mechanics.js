@@ -1,9 +1,9 @@
-import {eigs, trace, det, sort, pow, sqrt, abs, max} from 'mathjs'
+import {eigs, trace, det, sort, pow, sqrt, abs, max, numeric} from 'mathjs'
 
 // function to calculate Von Mises stress
 // https://en.wikipedia.org/wiki/Von_Mises_yield_criterion
 function vonMises(stressObj){
-    const {s11, s22, s33, s12, s13, s23} = stressObj 
+    let {s11, s22, s33, s12, s13, s23} = stressObj 
 
     const A = pow(s11-s22,2)
     const B = pow(s22-s33,2)
@@ -17,9 +17,9 @@ function vonMises(stressObj){
 
 // function to format inputs object as a matrix
 function toMatrix(stressObj) {
-    const {s11, s22, s33, s12, s13, s23} = stressObj
+    let {s11, s22, s33, s12, s13, s23} = stressObj
 
-    const S = [[s11, s12, s13],[s12, s22, s23],[s13, s23, s33]]
+    let S = [[s11, s12, s13],[s12, s22, s23],[s13, s23, s33]]
 
     return S
 }
@@ -31,9 +31,9 @@ function invariants(S){
     // I1 = s11 + s22 + s33 = tr(S)
     // I2 = 0.5*((tr(S))^2 - tr(S^2))
     // I3 = det(S)
-    const I1 = trace(S)
-    const I2 = 0.5*(pow(trace(S),2) - trace(pow(S,2)))
-    const I3 = det(S)
+    let I1 = trace(S)
+    let I2 = 0.5*(pow(trace(S),2) - trace(pow(S,2)))
+    let I3 = det(S)
 
     return {I1, I2, I3}
 }
@@ -42,13 +42,13 @@ function invariants(S){
 // function to calculate principal stresses for a given tensor
 function principalStresses(S){
     // (P1, P2, P3) = eig(S)
-    const { values, vectors } = eigs(S)
+    let { values, vectors } = eigs(S)
     // eigs() function returns eigenvalues sorted in ascending order
     // need to sort in descending order because P1 > P2 > P3
     values = sort(values, 'desc')
-    const P1 = values[0]
-    const P2 = values[1]
-    const P3 = values[2]
+    let P1 = values[0]
+    let P2 = values[1]
+    let P3 = values[2]
     return {P1, P2, P3}
 }
 
