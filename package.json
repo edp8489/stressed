@@ -5,12 +5,15 @@
   "author": "Eric Peters <eric@epeters.io> (https://www.epeters.io/)",
   "homepage": "https://www.epeters.io/",
   "dependencies": {
+    "@bokeh/slickgrid": "^2.4.4102",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.1",
+    "chart.js": "^4.2.1",
     "mathjs": "^11.8.0",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-gtm-module": "^2.0.11",
     "react-scripts": "^5.0.1"
@@ -35,6 +38,8 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^8.39.0",
+    "eslint-config-react-app": "^7.0.1",
     "gh-pages": "^5.0.0"
   }
 }

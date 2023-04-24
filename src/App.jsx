@@ -35,6 +35,14 @@ export default function App() {
   const [darkMode, toggleDark] = React.useState(false);
   const [calcRequired, toggleCalc] = React.useState(false);
   const [resultsState, updateResults] = React.useState({
+    "stressTensor":{
+      "s11":0,
+      "s22":0,
+      "s33":0,
+      "s12":0,
+      "s13":0,
+      "s23":0
+    },
     "vonMisesStress":0,
     "invariants":{
       "I1":0,
@@ -62,7 +70,7 @@ export default function App() {
   */
  
   
-  const calculate = function(inputs){
+  function calculate(inputs){
     toggleCalc(false)
     //console.log(inputs)
     let stressTensor = mech.toMatrix(inputs)
@@ -80,10 +88,13 @@ export default function App() {
     // calculate von Mises stress
     let vonMises = mech.vonMises(inputs)
 
-    updateResults({"vonMisesStress":vonMises,
-    "invariants":invariants,
-    "principalStresses":principalStresses,
-    "maxShearStress":maxShear})
+    updateResults({
+      "stressTensor": { ...inputs },
+      "vonMisesStress": vonMises,
+      "invariants": invariants,
+      "principalStresses": principalStresses,
+      "maxShearStress": maxShear
+    })
   }
   
   return (
@@ -100,7 +111,7 @@ export default function App() {
         <ResultsCard 
           calcRequired={calcRequired}
           results={resultsState} />
-        <MohrsCircle />
+        <MohrsCircle {...resultsState.stressTensor} />
         <Footer />
       </Box>
     </ThemeProvider>

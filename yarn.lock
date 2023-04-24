@@ -1511,6 +1511,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@bokeh/slickgrid@npm:^2.4.4102":
+  version: 2.4.4102
+  resolution: "@bokeh/slickgrid@npm:2.4.4102"
+  dependencies:
+    "@types/slickgrid": ^2.1.30
+    jquery: ">=3.4.0"
+    jquery-ui: ">=1.8.0"
+    tslib: ^1.10.0
+  checksum: 33734910420c53848bb6873d3a5c265448422d398acfae4cb9d62ac4eb1c2bb54e84ca540ea87c7de8f7cf8eb57274f896c1ecdcfb3a3bf986758232c2b28ffc
+  languageName: node
+  linkType: hard
+
 "@csstools/normalize.css@npm:*":
   version: 12.0.0
   resolution: "@csstools/normalize.css@npm:12.0.0"
@@ -2230,6 +2242,13 @@ __metadata:
     "@jridgewell/resolve-uri": 3.1.0
     "@jridgewell/sourcemap-codec": 1.4.14
   checksum: 0572669f855260808c16fe8f78f5f1b4356463b11d3f2c7c0b5580c8ba1cbf4ae53efe9f627595830856e57dbac2325ac17eb0c3dd0ec42102e6f227cc289c02
+  languageName: node
+  linkType: hard
+
+"@kurkle/color@npm:^0.3.0":
+  version: 0.3.2
+  resolution: "@kurkle/color@npm:0.3.2"
+  checksum: 79e97b31f8f6efb28c69d373f94b0c7480226fe8ec95221f518ac998e156444a496727ce47de6d728eb5c3369288e794cba82cae34253deb0d472d3bfe080e49
   languageName: node
   linkType: hard
 
@@ -2954,6 +2973,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/jquery@npm:*":
+  version: 3.5.16
+  resolution: "@types/jquery@npm:3.5.16"
+  dependencies:
+    "@types/sizzle": "*"
+  checksum: 13c995f15d1c2f1d322103dc1cb0a22b95eecc3e7546f00279b8731aea21d7ec04550af40e609ee48e755d4e11bf61c25b4aa9f53df3bcbec4b8fe8e81471732
+  languageName: node
+  linkType: hard
+
 "@types/json-schema@npm:*, @types/json-schema@npm:^7.0.4, @types/json-schema@npm:^7.0.5, @types/json-schema@npm:^7.0.8, @types/json-schema@npm:^7.0.9":
   version: 7.0.11
   resolution: "@types/json-schema@npm:7.0.11"
@@ -2976,9 +3004,9 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 18.15.13
-  resolution: "@types/node@npm:18.15.13"
-  checksum: 79cc5a2b5f98e8973061a4260a781425efd39161a0e117a69cd089603964816c1a14025e1387b4590c8e82d05133b7b4154fa53a7dffb3877890a66145e76515
+  version: 18.16.0
+  resolution: "@types/node@npm:18.16.0"
+  checksum: 63e0042136663b9e85ce503a4c65406cc6621fdba63ea66c74b4b1364a9aa9bdb57cadcb76696abab177f38a819b0fa6ace9e7f1647dcb990aedb1b4bd01012f
   languageName: node
   linkType: hard
 
@@ -3099,6 +3127,22 @@ __metadata:
     "@types/mime": "*"
     "@types/node": "*"
   checksum: 2e078bdc1e458c7dfe69e9faa83cc69194b8896cce57cb745016580543c7ab5af07fdaa8ac1765eb79524208c81017546f66056f44d1204f812d72810613de36
+  languageName: node
+  linkType: hard
+
+"@types/sizzle@npm:*":
+  version: 2.3.3
+  resolution: "@types/sizzle@npm:2.3.3"
+  checksum: 586a9fb1f6ff3e325e0f2cc1596a460615f0bc8a28f6e276ac9b509401039dd242fa8b34496d3a30c52f5b495873922d09a9e76c50c2ab2bcc70ba3fb9c4e160
+  languageName: node
+  linkType: hard
+
+"@types/slickgrid@npm:^2.1.30":
+  version: 2.1.33
+  resolution: "@types/slickgrid@npm:2.1.33"
+  dependencies:
+    "@types/jquery": "*"
+  checksum: c6d099f993cd16bf8ddd9bda22a846b201aceb9ce3674d4871ee9234762daf3b0f2e7afe2e7ac07c73437d516bc52fc45d82d64287849ff391b9ab21e9c5acdb
   languageName: node
   linkType: hard
 
@@ -4430,6 +4474,15 @@ __metadata:
   version: 2.0.1
   resolution: "char-regex@npm:2.0.1"
   checksum: 8524c03fd7e58381dccf33babe885fe62731ae20755528b19c39945b8203479184f35247210dc9eeeef279cdbdd6511cd3182e0e1db8e4549bf2586470b7c204
+  languageName: node
+  linkType: hard
+
+"chart.js@npm:^4.2.1":
+  version: 4.2.1
+  resolution: "chart.js@npm:4.2.1"
+  dependencies:
+    "@kurkle/color": ^0.3.0
+  checksum: 7319fdfd1e29812e87bbc07737e8c9072ff659bbc09ade8dd262f83424cd7e48f89afe5220e11e002c9f236883fae3f3adb8adc16acb4682b0ddcc0b661c3af9
   languageName: node
   linkType: hard
 
@@ -5998,7 +6051,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.3.0":
+"eslint@npm:^8.3.0, eslint@npm:^8.39.0":
   version: 8.39.0
   resolution: "eslint@npm:8.39.0"
   dependencies:
@@ -8326,6 +8379,22 @@ __metadata:
   bin:
     jiti: bin/jiti.js
   checksum: 46c41cd82d01c6efdee3fc0ae9b3e86ed37457192d6366f19157d863d64961b07982ab04e9d5879576a1af99cc4d132b0b73b336094f86a5ce9fb1029ec2d29f
+  languageName: node
+  linkType: hard
+
+"jquery-ui@npm:>=1.8.0":
+  version: 1.13.2
+  resolution: "jquery-ui@npm:1.13.2"
+  dependencies:
+    jquery: ">=1.8.0 <4.0.0"
+  checksum: 0d04a4b86e703d6ff71bcc37335f99be137b03fa24fa22f00f61f5aac132e7143b7d6dd9973ad4f72366e102826e417bc3d88c1640f7dd824961a7131bd3966a
+  languageName: node
+  linkType: hard
+
+"jquery@npm:>=1.8.0 <4.0.0, jquery@npm:>=3.4.0":
+  version: 3.6.4
+  resolution: "jquery@npm:3.6.4"
+  checksum: 8354f7bd0a0424aa714ee1b6b1ef74b410f834eb5c8501682289b358bc151f11677f11188b544f3bb49309d6ec4d15d1a5de175661250c206b06185a252f706f
   languageName: node
   linkType: hard
 
@@ -10767,6 +10836,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-chartjs-2@npm:^5.2.0":
+  version: 5.2.0
+  resolution: "react-chartjs-2@npm:5.2.0"
+  peerDependencies:
+    chart.js: ^4.1.1
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: ace702185be1450e5888a8bcd8b5fc1995067e3b11d236764a67f5567a3d7c32ff16923b8d48d3d39bda6e45135da6c044c9b43fbe8e1978f95aca9d2c0ce348
+  languageName: node
+  linkType: hard
+
 "react-dev-utils@npm:^12.0.1":
   version: 12.0.1
   resolution: "react-dev-utils@npm:12.0.1"
@@ -11829,13 +11908,18 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "stressed@workspace:."
   dependencies:
+    "@bokeh/slickgrid": ^2.4.4102
     "@emotion/react": ^11.10.6
     "@emotion/styled": ^11.10.6
     "@mui/icons-material": ^5.11.16
     "@mui/material": ^5.12.1
+    chart.js: ^4.2.1
+    eslint: ^8.39.0
+    eslint-config-react-app: ^7.0.1
     gh-pages: ^5.0.0
     mathjs: ^11.8.0
     react: ^18.2.0
+    react-chartjs-2: ^5.2.0
     react-dom: ^18.2.0
     react-gtm-module: ^2.0.11
     react-scripts: ^5.0.1
@@ -12446,7 +12530,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^1.8.1":
+"tslib@npm:^1.10.0, tslib@npm:^1.8.1":
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
   checksum: dbe628ef87f66691d5d2959b3e41b9ca0045c3ee3c7c7b906cc1e328b39f199bb1ad9e671c39025bd56122ac57dfbf7385a94843b1cc07c60a4db74795829acd
