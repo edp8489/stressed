@@ -9,7 +9,6 @@ import SummaryCard from "./Components/SummaryCard.jsx";
 import InputsCard from "./Components/InputsCard.jsx";
 import ResultsCard from "./Components/ResultsCard.jsx";
 import MohrsCircle from "./Components/Mohr.jsx";
-import { stateFromSchema } from "./Components/InputsCard.jsx";
 import * as mech from "./mechanics.js"
 
 // analytics

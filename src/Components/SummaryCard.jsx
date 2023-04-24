@@ -16,7 +16,7 @@ export default function SummaryCard(props) {
         <Box sx={{ typography: "p", textAlign: "center" }}>
           <i>(April 2023 - in work)</i><br />
           This tool performs several transformations and compares multiple failure theories for a
-          given stress tensor.</Box>
+          given stress tensor.</Box><br />
           <Box sx={{ typography: "p", textAlign: "left" }}>
             Calculates the principal stresses, stress invariants, and plots Mohr's Circle for 2D or 3D stress states<br />
             Calculates Max Shear stress per Tresca failure theory<br />
