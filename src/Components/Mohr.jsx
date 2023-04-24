@@ -109,11 +109,11 @@ export default function MohrsCircle(props) {
 
     // TODO - logic to return 2D or 3D Mohr based on inputs
     const is3D = (s13 == 0 && s23 == 0 && s33 == 0)
-
+    // <Mohr2D s11={s11} s22={s22} s12={s12} />
     return (
         <Paper elevation={3} sx={{ padding: "10px", textAlign: "center" }}>
             <Typography variant="overline">Mohr's Circle</Typography><br />
-            <Mohr2D s11={s11} s22={s22} s12={s12} />
+            <i>in work</i>
         </Paper>
     )
 }
