@@ -3,7 +3,7 @@
   "packageManager": "yarn@3.5.0",
   "version": "0.1.0",
   "author": "Eric Peters <eric@epeters.io> (https://www.epeters.io/)",
-  "homepage": "https://www.epeters.io/stressed",
+  "homepage": "https://edp8489.github.io/stressed",
   "license":"none",
   "dependencies": {
     "@bokeh/slickgrid": "^2.4.4102",
