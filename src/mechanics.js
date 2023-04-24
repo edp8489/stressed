@@ -53,10 +53,21 @@ function principalStresses(S){
 }
 
 // function to calculate MaxShear stress for a given tensor
-function tresca(P1, P2, P3){
+function trescaCheck(P1, P2, P3){
 
-    return(0.5*max(abs(P1 - P2),abs(P2 - P3),abs(P3 - P1)))
+    let P1_P2 = abs(P1 - P2)
+    let P2_P3 = abs(P2 - P3)
+    let P3_P1 = abs(P3 - P1)
+
+    let MaxShear = 0.5*max(P1_P2,P2_P3,P3_P1)
+
+    return({
+        P1_P2: P1_P2,
+        P2_P3: P2_P3,
+        P3_P1: P3_P1,
+        MaxShear: MaxShear
+    })
 
 }
 
-export {vonMises, toMatrix, invariants, principalStresses, tresca}
+export {vonMises, toMatrix, invariants, principalStresses, trescaCheck}

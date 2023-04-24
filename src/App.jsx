@@ -53,7 +53,12 @@ export default function App() {
       "P2":0,
       "P3":0
     },
-    "maxShearStress":0
+    "Tresca":{
+      "P1_P2":0,
+      "P2_P3":0,
+      "P3_P1":0,
+      "MaxShear":0
+    }
   });
   
   let theme = darkMode ? darkTheme : lightTheme;
@@ -82,7 +87,7 @@ export default function App() {
     let invariants = mech.invariants(stressTensor)
 
     // calculate Max Shear stress
-    let maxShear = mech.tresca(principalStresses.P1, principalStresses.P2, principalStresses.P3)
+    let maxShear = mech.trescaCheck(principalStresses.P1, principalStresses.P2, principalStresses.P3)
 
     // calculate von Mises stress
     let vonMises = mech.vonMises(inputs)
@@ -92,7 +97,7 @@ export default function App() {
       "vonMisesStress": vonMises,
       "invariants": invariants,
       "principalStresses": principalStresses,
-      "maxShearStress": maxShear
+      "Tresca": maxShear
     })
   }
   
