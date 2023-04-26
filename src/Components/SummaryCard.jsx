@@ -1,10 +1,6 @@
 import React from "react";
 import { Box, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export default function SummaryCard(props) {
 
@@ -14,13 +10,10 @@ export default function SummaryCard(props) {
         <Box sx={{ typography: "h3", textAlign: "center" }}>Stressed</Box>
         <br />
         <Box sx={{ typography: "p", textAlign: "center" }}>
-          <i>(April 2023 - in work)</i><br />
           This tool performs several transformations and compares multiple failure theories for a
-          given stress tensor.</Box><br />
-          <Box sx={{ typography: "p", textAlign: "left" }}>
-            Calculates the principal stresses, stress invariants, and plots Mohr's Circle for 2D or 3D stress states<br />
-            Calculates Max Shear stress per Tresca failure theory<br />
-            Calculates von Mises stress and compares two methods of determining sign for use with Signed von Mises criterion<br />
+          given stress tensor.<br /> <br />
+          <i>Note: All calculations are performed in your local browser session. No data is sent to an external server.</i>
+            
         </Box>
       </Typography>
     </Paper>

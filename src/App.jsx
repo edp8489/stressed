@@ -115,7 +115,7 @@ export default function App() {
         <ResultsCard 
           calcRequired={calcRequired}
           results={resultsState} />
-        <MohrsCircle {...resultsState.stressTensor} />
+        <MohrsCircle {...resultsState.stressTensor} {...resultsState.principalStresses} />
         <Footer />
       </Box>
     </ThemeProvider>

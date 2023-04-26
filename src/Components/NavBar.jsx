@@ -36,10 +36,7 @@ export function Footer(){
       margin: '8em auto -4em auto',
       textAlign: 'center',
   }} >
-      ©&nbsp;2022&nbsp;Eric Peters
-      &nbsp;
-      •
-      &nbsp;
+      ©&nbsp;2023&nbsp;Eric Peters<br />
       <a href="https://www.epeters.io">Homepage</a>
       &nbsp;
       •

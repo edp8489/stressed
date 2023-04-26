@@ -19,9 +19,9 @@ export default function ResultsCard(props) {
       <Grid container spacing={2}>
         <Grid item xs={3}>
           <b>Principal Stresses</b><br />
-          Major (P<sub>1</sub>): {round(principalStresses.P1,3)}<br />
-          Middle (P<sub>2</sub>): {round(principalStresses.P2,3)}<br />
-          Minor (P<sub>3</sub>): {round(principalStresses.P3,3)}
+          Major (P<sub>1</sub>): {round(principalStresses.P1,1)}<br />
+          Middle (P<sub>2</sub>): {round(principalStresses.P2,1)}<br />
+          Minor (P<sub>3</sub>): {round(principalStresses.P3,1)}
         </Grid>
         <Grid item xs={3}>
           <b>Invariants</b><br />
@@ -31,14 +31,14 @@ export default function ResultsCard(props) {
         </Grid>
         <Grid item xs={3}>
           <b>Tresca & Supporting Calcs</b><br />
-          <b>Max Shear: {round(Tresca.MaxShear,3)}</b><br />
-          |P<sub>1</sub> - P<sub>2</sub>|: {round(Tresca.P1_P2,3)} <br />
-          |P<sub>2</sub> - P<sub>3</sub>|: {round(Tresca.P2_P3,3)} <br />
-          |P<sub>3</sub> - P<sub>1</sub>|: {round(Tresca.P3_P1,3)}
+          <b>Max Shear: {round(Tresca.MaxShear,1)}</b><br />
+          |P<sub>1</sub> - P<sub>2</sub>|: {round(Tresca.P1_P2,1)} <br />
+          |P<sub>2</sub> - P<sub>3</sub>|: {round(Tresca.P2_P3,1)} <br />
+          |P<sub>3</sub> - P<sub>1</sub>|: {round(Tresca.P3_P1,1)}
         </Grid>
         <Grid item xs={3}>
           <b>von Mises stress</b><br />
-          S<sub>vm</sub>: {round(vonMisesStress,3)}<br />
+          S<sub>vm</sub>: {round(vonMisesStress,1)}<br />
           Sign (using |P<sub>1</sub>| ? |P<sub>3</sub>|): {abs(principalStresses.P3) > abs(principalStresses.P1)? -1: 1}<br />
           Sign (using I<sub>1</sub>): {sign(invariants.I1)}
         </Grid>
