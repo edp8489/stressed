@@ -13,6 +13,7 @@ import {
     Legend,
 } from 'chart.js';
 import { Scatter } from 'react-chartjs-2'
+import { useTheme } from '@mui/material/styles';
 
 ChartJS.register(
     CategoryScale,
@@ -24,7 +25,19 @@ ChartJS.register(
     Legend
 );
 
-ChartJS.defaults.font.size = 16
+
+const tableau10Hex = {
+    blue: "#5778a4",
+    orange: "#e49444",
+    red: "#d1615d",
+    teal: "#85b6b2",
+    green: "#6a9f58",
+    yellow: "#e7ca60",
+    purple: "#a87c9f",
+    pink: "#f1a2a9",
+    brown: "#967662",
+    grey: "#b8b0ac"
+}
 
 // configure MathJS to return Arrays rather than Matrix objects
 const mjsConfig = {
@@ -51,14 +64,14 @@ function toChartJSdata(x_data, y_data) {
 
 // React functional component for 2D Mohr's Circle
 function Mohr2D(props) {
-    let { s11, s22, s12 } = props
+    var { s11, s22, s12 } = props
     // calculate max shear stress, aka Radius of circle
-    let R = mjs.sqrt(mjs.pow(0.5 * (s11 - s22), 2) + mjs.pow(s12, 2))
+    var R = mjs.sqrt(mjs.pow(0.5 * (s11 - s22), 2) + mjs.pow(s12, 2))
     //console.log("R:")
     //console.log(R)
 
     // calculate average stress, aka origin of circle
-    let Savg = mjs.evaluate("0.5*(s11+s22)", { s11: s11, s22: s22 })
+    var Savg = mjs.evaluate("0.5*(s11+s22)", { s11: s11, s22: s22 })
     //console.log("S11")
     // console.log(s11)
     // console.log("S22")
@@ -67,11 +80,18 @@ function Mohr2D(props) {
     // console.log(Savg)
 
     // Scale and shift X and Y coordinates using R and Savg
-    let X = XX.map((x_i) => { return (R * (x_i) + Savg) })
+    var X = XX.map((x_i) => { return (R * (x_i) + Savg) })
     // console.log(X)
 
-    let Y = YY.map((y_i) => { return (R * (y_i)) })
+    var Y = YY.map((y_i) => { return (R * (y_i)) })
     // console.log(Y)
+
+    // set X and Y bounds to remain square
+    var ymax = (R == 0)? 1 : mjs.ceil(1.1*R)
+    var ymin = (R == 0)? -1 : mjs.floor(-1.1*R)
+    var xmax = (R == 0)? 1 : mjs.ceil(Savg + 1.1*R)
+    var xmin = (R == 0)? -1 : mjs.floor(Savg -1.1*R)
+
 
     // chartjs options
     const options = {
@@ -84,14 +104,18 @@ function Mohr2D(props) {
                     display: true,
                     text: 'Normal Stress'
                 },
-                position: "center"
+                position: "center",
+                min: xmin,
+                max: xmax
             },
             y: {
                 title: {
                     display: true,
                     text: 'Shear Stress'
                 },
-                position: "left"
+                position: "left",
+                min: ymin,
+                max: ymax
             }
         },
         plugins: {
@@ -105,11 +129,11 @@ function Mohr2D(props) {
         },
     };
 
-    let cjsData = {
+    var cjsData = {
         datasets: [
             {
                 showLine: true,
-                borderColor: "#4e79a7",
+                borderColor: tableau10Hex["blue"],
                 pointRadius: 2,
                 data: toChartJSdata(X, Y)
             }
@@ -123,25 +147,115 @@ function Mohr2D(props) {
 
 
 // React component for 3D Mohr's Circle
-// @TODO
 function Mohr3D(props) {
+    const {P1, P2, P3} = props
 
+    // calculate radii and centers for 3 circles
+    var R1 = 0.5*(P2 - P3)
+    var center1 = 0.5*(P2 + P3)
 
+    var R2 = 0.5*(P1 - P3)
+    var center2 = 0.5*(P1 + P3)
+
+    var R3 = 0.5*(P1 - P2)
+    var center3 = 0.5*(P1 + P2)
+
+    // Scale and shift X and Y coordinates using R# and center#
+    var X1 = XX.map((x_i) => { return (R1 * (x_i) + center1) })
+    var Y1 = YY.map((y_i) => { return (R1 * (y_i)) })
+    var X2 = XX.map((x_i) => { return (R2 * (x_i) + center2) })
+    var Y2 = YY.map((y_i) => { return (R2 * (y_i)) })
+    var X3 = XX.map((x_i) => { return (R3 * (x_i) + center3) })
+    var Y3 = YY.map((y_i) => { return (R3 * (y_i)) })
+
+    // calculate axis scale
+    var ymax = (R2 == 0)? 1 : mjs.ceil(1.1*R2)
+    var ymin = (R2 == 0)? -1 : mjs.floor(-1.1*R2)
+    var xmax = (R2 == 0)? 1 : mjs.ceil(center2 + 1.1*R2)
+    var xmin = (R2 == 0)? -1 : mjs.floor(center2 -1.1*R2)
+
+    // chartjs options
+    const options = {
+        responsive: true,
+        aspectRatio: 1,
+        maintainAspectRatio: true,
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: 'Normal Stress'
+                },
+                position: "center",
+                min: xmin,
+                max: xmax
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: 'Shear Stress'
+                },
+                position: "left",
+                min: ymin,
+                max: ymax
+            }
+        },
+        plugins: {
+            title: {
+                display: true,
+                text: "Mohr's Circle for 3D Stress State",
+            },
+            legend: {
+                display: true
+            }
+        },
+    };
+
+    var cjsData = {
+        datasets: [
+            {
+                showLine: true,
+                borderColor: tableau10Hex["blue"],
+                pointRadius: 2,
+                data: toChartJSdata(X1, Y1),
+                label:"P2-P3"
+            },
+            {
+                showLine: true,
+                borderColor: tableau10Hex["teal"],
+                pointRadius: 2,
+                data: toChartJSdata(X2, Y2),
+                label:"P1-P3"
+            },
+            {
+                showLine: true,
+                borderColor: tableau10Hex["red"],
+                pointRadius: 2,
+                data: toChartJSdata(X3, Y3),
+                label:"P1-P2"
+            }
+        ]
+    }
+    
     return (
-        <Box><i>Sorry, 3D component still in work</i></Box>
+        <Scatter options={options} data={cjsData} />
     )
 
 }
 
 export default function MohrsCircle(props) {
     const { s11, s22, s33, s12, s23, s13 } = props
+    const {P1, P2, P3} = props
 
-    // TODO - logic to return 2D or 3D Mohr based on inputs
     const is2D = (s13 == 0 && s23 == 0 && s33 == 0)
+
+    // set default font size and color
+    ChartJS.defaults.font.size = 16
+    const theme = useTheme();
+    ChartJS.defaults.color = theme.palette.text.primary;    
 
     const Mohr = is2D ?
         <Mohr2D s11={s11} s22={s22} s12={s12} /> :
-        <Mohr3D />
+        <Mohr3D {...{P1, P2, P3}}/>
         
     return (
         <Paper elevation={3} sx={{ padding: "10px", textAlign: "center" }}>
