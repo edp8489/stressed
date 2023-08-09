@@ -58,7 +58,8 @@ export default function App() {
       "P2_P3":0,
       "P3_P1":0,
       "MaxShear":0
-    }
+    },
+    "triaxFactor":0
   });
   
   let theme = darkMode ? darkTheme : lightTheme;
@@ -92,12 +93,16 @@ export default function App() {
     // calculate von Mises stress
     let vonMises = mech.vonMises(inputs)
 
+    // calculate triaxiality factor
+    let triax = mech.triaxiality(principalStresses, vonMises)
+
     updateResults({
       "stressTensor": { ...inputs },
       "vonMisesStress": vonMises,
       "invariants": invariants,
       "principalStresses": principalStresses,
-      "Tresca": maxShear
+      "Tresca": maxShear,
+      "triaxFactor":triax
     })
   }
   

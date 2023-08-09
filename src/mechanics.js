@@ -70,4 +70,13 @@ function trescaCheck(P1, P2, P3){
 
 }
 
-export {vonMises, toMatrix, invariants, principalStresses, trescaCheck}
+// function to calculate triaxiality factor
+function triaxiality(principalStresses, vonMisesStress){
+    let {P1, P2, P3} = principalStresses
+
+    let triaxFactor = ((P1 + P2 + P3)/3)/vonMisesStress
+
+    return triaxFactor
+}
+
+export {vonMises, toMatrix, invariants, principalStresses, trescaCheck, triaxiality}

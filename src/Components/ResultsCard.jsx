@@ -8,7 +8,7 @@ import {abs, sign, round} from 'mathjs'
 export default function ResultsCard(props) {
   // destructure props
   const { calcRequired, results } = props;
-  const {vonMisesStress, Tresca, invariants, principalStresses} = results
+  const {vonMisesStress, Tresca, invariants, principalStresses, triaxFactor} = results
   return (
     <Paper elevation={3} sx={{ ...{ marginTop: "10px", marginBottom: "10px", padding: "10px", textAlign:"center" }, ...props.sx }}>
       <Typography variant="overline">Results</Typography><br />
@@ -38,9 +38,13 @@ export default function ResultsCard(props) {
         </Grid>
         <Grid item xs={6} md={4} lg={3} >
           <b>von Mises stress</b><br />
-          S<sub>vm</sub>: {round(vonMisesStress,1)}<br />
+          &sigma;<sub>vm</sub>: {round(vonMisesStress,1)}<br />
           Sign (using |P<sub>1</sub>| &gt; |P<sub>3</sub>|): {abs(principalStresses.P3) > abs(principalStresses.P1)? -1: 1}<br />
           Sign (using I<sub>1</sub>): {sign(invariants.I1)}
+        </Grid>
+        <Grid>
+          <b>Triaxiality Factor</b><br />
+          &sigma;<sub>m</sub>/&sigma;<sub>eq</sub> = {round(triaxFactor,3)}
         </Grid>
       </Grid>
     </Paper>
