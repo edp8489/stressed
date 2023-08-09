@@ -81,7 +81,7 @@ export default function InputsCard(props) {
       >
         <div>
           <FormControl sx={{ margin: "10px" }}>
-            <Grid container spacing={2}>
+            <Grid container spacing={2} direction="row" justifyContent="space-evenly" alignItems="center" >
               {inputFields} 
             </Grid>
           </FormControl>
