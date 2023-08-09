@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/stressed/static/css/main.e6c13ad2.css",
-    "main.js": "/stressed/static/js/main.8759105f.js",
+    "main.js": "/stressed/static/js/main.f7c53b30.js",
     "index.html": "/stressed/index.html",
     "main.e6c13ad2.css.map": "/stressed/static/css/main.e6c13ad2.css.map",
-    "main.8759105f.js.map": "/stressed/static/js/main.8759105f.js.map"
+    "main.f7c53b30.js.map": "/stressed/static/js/main.f7c53b30.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.8759105f.js"
+    "static/js/main.f7c53b30.js"
   ]
 }
